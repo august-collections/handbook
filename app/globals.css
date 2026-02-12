@@ -78,3 +78,37 @@ body {
   -webkit-user-select: none;
   -webkit-touch-callout: none;
 }
+
+/* Mega-menu dropdown animation */
+@keyframes mega-menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.mega-menu-enter {
+  animation: mega-menu-in 180ms ease-out both;
+  transform-origin: top center;
+}
+
+/* Mobile nav overlay animation */
+@keyframes mobile-nav-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.mobile-nav-enter {
+  animation: mobile-nav-in 220ms ease-out both;
+  transform-origin: top center;
+}

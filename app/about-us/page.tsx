@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
 
 export default function AboutUsPage() {
-  redirect("/foundation/ethos");
+  redirect("/welcome/the-august-ethos");
 }

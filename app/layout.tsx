@@ -5,6 +5,7 @@ import {
   Plus_Jakarta_Sans,
 } from "next/font/google";
 import TopNav from "../components/TopNav";
+import Breadcrumbs from "../components/nav/Breadcrumbs";
 import "./globals.css";
 
 const geistMono = Geist_Mono({
@@ -24,10 +25,10 @@ const cormorantGaramond = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "August Handbook",
+  title: "Handbook | August",
   description: "Onboarding tool for August Collections.",
   icons: {
-    icon: "/images/favicon.avif",
+    icon: "/images/favicon-h.ico",
   },
 };
 
@@ -43,6 +44,7 @@ export default function RootLayout({
       >
         <div className="flex min-h-screen flex-col">
           <TopNav />
+          <Breadcrumbs />
           <main className="mx-auto w-full max-w-[420px] px-6 pb-16 sm:max-w-[1440px]">
             {children}
           </main>

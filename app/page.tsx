@@ -25,24 +25,38 @@ export default function HomePage() {
             </div>
           </div>
         </div>
+
         <section className="grid gap-6 md:grid-cols-3">
-          <div className="group rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md">
-            <h2 className="text-lg font-semibold text-slate-800">Company Policy Handbook</h2>
+          <div className="flex flex-col p-6">
+            <h2 className="text-lg font-semibold text-slate-800"><Link href="/welcome" className="hover:text-[#326354]">Welcome</Link></h2>
+            <hr className="mt-2 border-t-[0.7px] border-slate-300" />
             <p className="mt-2 text-sm text-slate-500">
-              Employment policies, conduct, and people processes.
+              Company handbook, ethos, values, and onboarding.
             </p>
             <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-slate-500">
               <li>
-                <Link href="/foundation/ethos" className="hover:text-slate-700">
+                <Link href="/welcome/founders-vision" className="hover:text-slate-700">
+                  Founders&apos; Vision
+                </Link>
+              </li>
+              <li>
+                <Link href="/welcome/introduction-to-august" className="hover:text-slate-700">
+                  Introduction to August
+                </Link>
+              </li>
+              <li>
+                <Link href="/welcome/our-values" className="hover:text-slate-700">
+                  Our Values
+                </Link>
+              </li>
+              <li>
+                <Link href="/welcome/the-august-ethos" className="hover:text-slate-700">
                   The August Ethos
                 </Link>
               </li>
-              <li>Mission and vision statements</li>
-              <li>Values and culture</li>
-              <li>Policies for holiday, sickness, etc.</li>
             </ul>
             <Link
-              href="/overview"
+              href="/welcome"
               className="mt-4 inline-flex items-center gap-2 text-xs font-normal uppercase tracking-[0.2em] text-[#326354] hover:text-[#2a5044]"
             >
               More
@@ -59,95 +73,97 @@ export default function HomePage() {
               </svg>
             </Link>
           </div>
-          <div className="group rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md">
-            <h2 className="text-lg font-semibold text-slate-800">Tech &amp; IT</h2>
+          <div className="flex flex-col p-6">
+            <h2 className="text-lg font-semibold text-slate-800"><Link href="/wiki" className="hover:text-[#326354]">Wiki</Link></h2>
+            <hr className="mt-2 border-t-[0.7px] border-slate-300" />
             <p className="mt-2 text-sm text-slate-500">
-              Access, tools, devices, and troubleshooting guides.
+              Explore company knowledge, operations, and resources.
             </p>
-            <Link
-              href="/tech-it"
-              className="mt-4 inline-flex items-center gap-2 text-xs font-normal uppercase tracking-[0.2em] text-[#326354] hover:text-[#2a5044]"
-            >
-              More
-              <svg
-                aria-hidden="true"
-                viewBox="0 0 20 20"
-                className="h-4 w-4"
-                fill="none"
-              >
-                <path
-                  d="M17.5 10L11.25 3.75L10.3688 4.63125L15.1063 9.375L2.5 9.375L2.5 10.625L15.1063 10.625L10.3688 15.3687L11.25 16.25L17.5 10Z"
-                  fill="currentColor"
-                />
-              </svg>
-            </Link>
-          </div>
-          <div className="group rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md">
-            <h2 className="text-lg font-semibold text-slate-800">How To</h2>
-            <p className="mt-2 text-sm text-slate-500">
-              Step-by-step instructions for common tasks.
-            </p>
-            <Link
-              href="/how-to"
-              className="mt-4 inline-flex items-center gap-2 text-xs font-normal uppercase tracking-[0.2em] text-[#326354] hover:text-[#2a5044]"
-            >
-              More
-              <svg
-                aria-hidden="true"
-                viewBox="0 0 20 20"
-                className="h-4 w-4"
-                fill="none"
-              >
-                <path
-                  d="M17.5 10L11.25 3.75L10.3688 4.63125L15.1063 9.375L2.5 9.375L2.5 10.625L15.1063 10.625L10.3688 15.3687L11.25 16.25L17.5 10Z"
-                  fill="currentColor"
-                />
-              </svg>
-            </Link>
-          </div>
-        </section>
-        <section className="grid gap-6 md:grid-cols-2">
-          <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-            <h2 className="text-lg font-semibold text-slate-800">Training</h2>
-            <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-slate-600">
-              <li>Slide Deck to explain/present to new starters (digital, tech stack, company comms)</li>
-              <li>Hubspot playbook (role-specific)</li>
-              <li>Monitor Tool Adoption &amp; Usage Optimization in Q1</li>
-              <li>Reduce friction for Team (e.g. report.augustcollections.com)</li>
-              <li>Educate on Cross-Team Visibility to improve team communication towards 2026 strategic goals.</li>
-            </ul>
-          </div>
-          <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-            <h2 className="text-lg font-semibold text-slate-800">Tech</h2>
-            <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-slate-600">
-              <li>How To Slide decks for reference: Google workspace (MacOS + PC)</li>
-              <li>AI use (Gemini, ChatGPT)</li>
-              <li>Villa Valeria (Stripe)</li>
-              <li>1Password for a team and employee Vault</li>
-              <li>Laptop replacement or requisition (HR)</li>
-            </ul>
-          </div>
-          <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-            <h2 className="text-lg font-semibold text-slate-800">Security</h2>
-            <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-slate-600">
-              <li>2FA, Google Authenticator, Microsoft Authenticator</li>
-              <li>Laptop safety, responsibility, Acceptable Use Policy for all staff</li>
-              <li>Office Ready deck</li>
-              <li>Ninja + Sentinel migration to Heimdal</li>
-              <li>Remote access / support</li>
-              <li>Portal for support, as needed</li>
-            </ul>
-          </div>
-          <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-            <h2 className="text-lg font-semibold text-slate-800">IT</h2>
-            <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-slate-600">
-              <li>In-office support for: Google Workspace, Email support, Laptop software update requests</li>
+            <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-slate-500">
               <li>
-                Office Ready support for: Remote access / Portal tickets, Ninja (legacy) and Sentinel
-                (legacy) migration to Heimdal
+                <Link href="/wiki/branding-and-identity" className="hover:text-slate-700">
+                  Branding &amp; Identity
+                </Link>
               </li>
-              <li>GEO location of stolen/lost laptops</li>
+              <li>
+                <Link href="/wiki/collections" className="hover:text-slate-700">
+                  Collections
+                </Link>
+              </li>
+              <li>
+                <Link href="/wiki/financials" className="hover:text-slate-700">
+                  Financials
+                </Link>
+              </li>
+              <li>
+                <Link href="/wiki/homeowners" className="hover:text-slate-700">
+                  Homeowners
+                </Link>
+              </li>
             </ul>
+            <Link
+              href="/wiki"
+              className="mt-4 inline-flex items-center gap-2 text-xs font-normal uppercase tracking-[0.2em] text-[#326354] hover:text-[#2a5044]"
+            >
+              More
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 20 20"
+                className="h-4 w-4"
+                fill="none"
+              >
+                <path
+                  d="M17.5 10L11.25 3.75L10.3688 4.63125L15.1063 9.375L2.5 9.375L2.5 10.625L15.1063 10.625L10.3688 15.3687L11.25 16.25L17.5 10Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </Link>
+          </div>
+          <div className="flex flex-col p-6">
+            <h2 className="text-lg font-semibold text-slate-800"><Link href="/it-support" className="hover:text-[#326354]">IT &amp; Support</Link></h2>
+            <hr className="mt-2 border-t-[0.7px] border-slate-300" />
+            <p className="mt-2 text-sm text-slate-500">
+              Tools, access, devices, and troubleshooting guides.
+            </p>
+            <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-slate-500">
+              <li>
+                <Link href="/it-support/accounts-sso-passwords" className="hover:text-slate-700">
+                  Accounts, SSO, Passwords
+                </Link>
+              </li>
+              <li>
+                <Link href="/it-support/applications" className="hover:text-slate-700">
+                  Applications
+                </Link>
+              </li>
+              <li>
+                <Link href="/it-support/device-setup" className="hover:text-slate-700">
+                  Device Setup
+                </Link>
+              </li>
+              <li>
+                <Link href="/it-support/security" className="hover:text-slate-700">
+                  Security
+                </Link>
+              </li>
+            </ul>
+            <Link
+              href="/it-support"
+              className="mt-4 inline-flex items-center gap-2 text-xs font-normal uppercase tracking-[0.2em] text-[#326354] hover:text-[#2a5044]"
+            >
+              More
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 20 20"
+                className="h-4 w-4"
+                fill="none"
+              >
+                <path
+                  d="M17.5 10L11.25 3.75L10.3688 4.63125L15.1063 9.375L2.5 9.375L2.5 10.625L15.1063 10.625L10.3688 15.3687L11.25 16.25L17.5 10Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </Link>
           </div>
         </section>
       </div>

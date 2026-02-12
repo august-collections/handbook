@@ -2,18 +2,19 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { apiRequest } from "../lib/api";
 import { clearAuth, getUser, isLoggedIn, setUser } from "../lib/auth";
 import type { AuthUser } from "../lib/auth";
 import { usePathname, useRouter } from "next/navigation";
+import MegaMenu from "./nav/MegaMenu";
+import MobileNav from "./nav/MobileNav";
 
 const TopNav = () => {
   const router = useRouter();
   const pathname = usePathname();
   const [loggedIn, setLoggedIn] = useState(false);
   const [name, setName] = useState<string | undefined>();
-  const [techMenuOpen, setTechMenuOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -42,20 +43,13 @@ const TopNav = () => {
     }
   }, [pathname]);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setTechMenuOpen(false);
-      setMobileMenuOpen(false);
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   const handleLogout = () => {
     clearAuth();
     setLoggedIn(false);
     router.replace("/login");
   };
+
+  const closeMobileMenu = useCallback(() => setMobileMenuOpen(false), []);
 
   const hideNavBranding = pathname === "/login" || pathname === "/signup";
   const hideNav = pathname === "/terms";
@@ -66,177 +60,96 @@ const TopNav = () => {
   }
 
   return (
-    <div className="sticky top-0 z-50 flex items-center justify-between gap-6 bg-[#f4f0ec] px-6 py-4">
-      {hideNavBranding ? (
-        <div />
-      ) : (
-        <Link href="/" className="flex items-center gap-3">
-          <Image
-            src="/August_Logo_Black.png"
-            alt="August"
-            width={120}
-            height={40}
-            className="h-8 w-auto"
-            priority
-          />
-          <span className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">
-            <span className="mr-2 text-slate-400" aria-hidden="true">
-              |
-            </span>
-            Handbook
-          </span>
-        </Link>
-      )}
-      {loggedIn && !hideNavBranding ? (
-        <>
-          <nav className="hidden flex-1 items-center justify-center gap-6 text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 md:flex">
-          <Link
-            href="/overview"
-            className="header-nav-link transition hover:text-slate-800"
-          >
-            Overview
+    <>
+      <header className="sticky top-0 z-50 flex items-center justify-between gap-6 bg-[#2a5044] px-6 py-[24.5px]">
+        {/* Logo */}
+        {hideNavBranding ? (
+          <div />
+        ) : (
+          <Link href="/" className="flex shrink-0 items-center">
+            <Image
+              src="/images/logo-handbook-748x173.png"
+              alt="August Handbook"
+              width={748}
+              height={173}
+              className="h-8 w-auto brightness-0 invert"
+              priority
+            />
           </Link>
-          <div
-            className="group relative"
-            onMouseEnter={() => setTechMenuOpen(true)}
-          >
-            <Link
-              href="/tech-it"
-              className="header-nav-link transition hover:text-slate-800"
-              aria-haspopup="true"
-              aria-expanded={techMenuOpen}
-            >
-              Tech &amp; IT
-            </Link>
-            <div
-              className={`absolute left-1/2 top-full z-10 mt-2 w-56 -translate-x-1/2 rounded-2xl border border-slate-200 bg-white py-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-600 shadow-lg transition ${
-                techMenuOpen ? "visible opacity-100" : "invisible opacity-0"
-              }`}
-            >
-              <Link
-                href="/tech-it/acceptable-use-policy"
-                className="block px-4 py-2 transition hover:bg-slate-100 hover:text-slate-800"
-              >
-                Acceptable Use Policy
-              </Link>
-            </div>
-          </div>
-          <Link href="/how-to" className="header-nav-link transition hover:text-slate-800">
-            How To
-          </Link>
-          </nav>
+        )}
+
+        {/* Desktop mega menu */}
+        {loggedIn && !hideNavBranding && <MegaMenu />}
+
+        {/* Mobile hamburger */}
+        {loggedIn && !hideNavBranding && (
           <button
             type="button"
             onClick={() => setMobileMenuOpen((prev) => !prev)}
-            className="ml-auto flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 md:hidden"
+            className="ml-auto flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-white/80 md:hidden"
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-nav"
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
           >
             Menu
             <span className="flex h-6 w-6 flex-col items-center justify-center gap-1">
-              <span className="h-[2px] w-5 bg-slate-500"></span>
-              <span className="h-[2px] w-5 bg-slate-500"></span>
-              <span className="h-[2px] w-5 bg-slate-500"></span>
+              <span
+                className={`h-[2px] w-5 bg-white transition ${
+                  mobileMenuOpen
+                    ? "translate-y-[6px] rotate-45"
+                    : ""
+                }`}
+              />
+              <span
+                className={`h-[2px] w-5 bg-white transition ${
+                  mobileMenuOpen ? "opacity-0" : ""
+                }`}
+              />
+              <span
+                className={`h-[2px] w-5 bg-white transition ${
+                  mobileMenuOpen
+                    ? "-translate-y-[6px] -rotate-45"
+                    : ""
+                }`}
+              />
             </span>
           </button>
-        </>
-      ) : (
-        <div className="hidden md:block md:flex-1" />
-      )}
-      {loggedIn ? (
-        <div className="flex items-center gap-4 text-sm text-slate-600">
-          <Link
-            href="/account"
-            className="header-nav-link text-sm font-medium text-slate-600 transition hover:text-slate-800"
-          >
-            {name ? `Welcome, ${name}` : "Account settings"}
-          </Link>
-          <button
-            type="button"
-            onClick={handleLogout}
-            className="rounded-full bg-[#326354] px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-[#2a5044]"
-          >
-            Logout
-          </button>
-        </div>
-      ) : (
-        !hideLoginLink && (
-          <Link
-            href="/login"
-            className="rounded-full bg-[#326354] px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-[#2a5044]"
-          >
-            Login
-          </Link>
-        )
-      )}
-      {loggedIn && !hideNavBranding && mobileMenuOpen ? (
-        <div className="fixed inset-0 z-50 flex justify-center bg-black/40 md:hidden">
-          <div
-            id="mobile-nav"
-            className="mt-16 h-[80vh] w-full max-w-sm overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl"
-          >
-            <div className="flex items-center justify-between border-b border-slate-200 px-5 py-4">
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
-                Navigation
-              </span>
-              <button
-                type="button"
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500"
-              >
-                Close
-              </button>
-            </div>
-            <div className="h-full overflow-y-auto px-5 py-4 text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
-              <details className="group" open>
-                <summary className="cursor-pointer list-none py-2">
-                  <span className="flex items-center justify-between">
-                    Tech &amp; IT
-                    <span className="text-slate-400 transition group-open:rotate-180">
-                      <svg viewBox="0 0 16 16" className="h-3 w-3" fill="none">
-                        <path
-                          d="M4 6l4 4 4-4"
-                          stroke="currentColor"
-                          strokeWidth="1"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </span>
-                  </span>
-                </summary>
-                <div className="mt-2 space-y-1">
-                  <Link
-                    href="/tech-it"
-                    className="block rounded-2xl px-3 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-600 hover:bg-slate-100 hover:text-slate-800"
-                  >
-                    Tech &amp; IT
-                  </Link>
-                  <Link
-                    href="/tech-it/acceptable-use-policy"
-                    className="block rounded-2xl px-3 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-600 hover:bg-slate-100 hover:text-slate-800"
-                  >
-                    Acceptable Use Policy
-                  </Link>
-                </div>
-              </details>
-              <Link
-                href="/overview"
-                className="mt-3 block rounded-2xl px-3 py-2 hover:bg-slate-100 hover:text-slate-800"
-              >
-                Overview
-              </Link>
-              <Link
-                href="/how-to"
-                className="mt-2 block rounded-2xl px-3 py-2 hover:bg-slate-100 hover:text-slate-800"
-              >
-                How To
-              </Link>
-            </div>
+        )}
+
+        {/* Auth section */}
+        {loggedIn ? (
+          <div className="hidden items-center gap-4 text-sm md:flex">
+            <Link
+              href="/account"
+              className="header-nav-link text-sm font-medium text-white/80 transition hover:text-white"
+            >
+              {name ? `Welcome, ${name}` : "Account settings"}
+            </Link>
+            <button
+              type="button"
+              onClick={handleLogout}
+              className="rounded-full bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#326354] transition hover:bg-white/90"
+            >
+              Logout
+            </button>
           </div>
-        </div>
-      ) : null}
-    </div>
+        ) : (
+          !hideLoginLink && (
+            <Link
+              href="/login"
+              className="rounded-full bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#326354] transition hover:bg-white/90"
+            >
+              Login
+            </Link>
+          )
+        )}
+      </header>
+
+      {/* Mobile nav overlay */}
+      {loggedIn && !hideNavBranding && (
+        <MobileNav open={mobileMenuOpen} onClose={closeMobileMenu} />
+      )}
+    </>
   );
 };
 
@@ -249,7 +162,9 @@ type AuthMePayload = {
 const AUTH_ME_URL =
   "https://xdti-9vsw-swso.e2.xano.io/api:Nz1enbvB:v3.2/auth/me";
 
-const resolveAuthMeUser = (payload: AuthMePayload): Record<string, unknown> | null => {
+const resolveAuthMeUser = (
+  payload: AuthMePayload
+): Record<string, unknown> | null => {
   if (!payload || typeof payload !== "object") return null;
   if ("user" in payload && payload.user && typeof payload.user === "object") {
     return payload.user;
@@ -263,7 +178,8 @@ const resolveAuthMeUser = (payload: AuthMePayload): Record<string, unknown> | nu
 const resolveUserDisplayName = (user?: Record<string, unknown> | null) => {
   const name = typeof user?.name === "string" ? user.name.trim() : "";
   if (name) return name;
-  const username = typeof user?.username === "string" ? user.username.trim() : "";
+  const username =
+    typeof user?.username === "string" ? user.username.trim() : "";
   if (username) return username;
   const email = typeof user?.email === "string" ? user.email.trim() : "";
   if (email) return email;
