@@ -138,10 +138,10 @@ export default function SignupClient({ imageSources }: SignupClientProps) {
       <div className="grid min-h-[440px] grid-cols-1 md:grid-cols-[36fr_65fr]">
         <div className="py-8 pr-8 pl-4">
           <Image
-            src="/August_Logo_Black.png"
-            alt="August"
-            width={200}
-            height={68}
+            src="/images/logo-handbook-748x173.png"
+            alt="Handbook"
+            width={748}
+            height={173}
             className="h-12 w-auto"
             priority
           />
