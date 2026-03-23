@@ -2,12 +2,19 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import { findSectionByPath, findItemByPath } from "../../lib/navigation";
 
 const HIDDEN_PATHS = ["/", "/login", "/signup", "/terms"];
 
 export default function Breadcrumbs() {
   const pathname = usePathname();
+  const [pageTitle, setPageTitle] = useState<string | null>(null);
+
+  useEffect(() => {
+    const h1 = document.querySelector("h1");
+    setPageTitle(h1?.textContent ?? null);
+  }, [pathname]);
 
   if (HIDDEN_PATHS.includes(pathname)) return null;
 
@@ -16,6 +23,7 @@ export default function Breadcrumbs() {
 
   const item = findItemByPath(pathname);
   const isLanding = pathname === section.href;
+  const isSubPage = item && pathname !== item.href && pathname.startsWith(`${item.href}/`);
 
   return (
     <nav
@@ -37,7 +45,7 @@ export default function Breadcrumbs() {
         {isLanding ? (
           <li>
             <span className="font-medium text-slate-600" aria-current="page">
-              {section.title}
+              {pageTitle || section.title}
             </span>
           </li>
         ) : (
@@ -55,14 +63,38 @@ export default function Breadcrumbs() {
                 <li aria-hidden="true">
                   <ChevronRight />
                 </li>
-                <li>
-                  <span
-                    className="font-medium text-slate-600"
-                    aria-current="page"
-                  >
-                    {item.label}
-                  </span>
-                </li>
+                {isSubPage ? (
+                  <>
+                    <li>
+                      <Link
+                        href={item.href}
+                        className="transition hover:text-slate-600"
+                      >
+                        {item.breadcrumbLabel || item.label}
+                      </Link>
+                    </li>
+                    <li aria-hidden="true">
+                      <ChevronRight />
+                    </li>
+                    <li>
+                      <span
+                        className="font-medium text-slate-600"
+                        aria-current="page"
+                      >
+                        {pageTitle || pathname.split("/").pop()}
+                      </span>
+                    </li>
+                  </>
+                ) : (
+                  <li>
+                    <span
+                      className="font-medium text-slate-600"
+                      aria-current="page"
+                    >
+                      {pageTitle || item.breadcrumbLabel || item.label}
+                    </span>
+                  </li>
+                )}
               </>
             )}
           </>

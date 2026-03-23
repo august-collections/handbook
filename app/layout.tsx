@@ -5,7 +5,7 @@ import {
   Plus_Jakarta_Sans,
 } from "next/font/google";
 import TopNav from "../components/TopNav";
-import Breadcrumbs from "../components/nav/Breadcrumbs";
+import Footer from "../components/Footer";
 import "./globals.css";
 
 const geistMono = Geist_Mono({
@@ -44,15 +44,10 @@ export default function RootLayout({
       >
         <div className="flex min-h-screen flex-col">
           <TopNav />
-          <Breadcrumbs />
           <main className="mx-auto w-full max-w-[420px] px-6 pb-16 sm:max-w-[1440px]">
             {children}
           </main>
-          <footer className="mt-auto px-6 pb-6">
-            <p className="text-center text-[10px] text-[#b3b3b3]">
-              Copyright 2026 August Collections
-            </p>
-          </footer>
+          <Footer />
         </div>
       </body>
     </html>

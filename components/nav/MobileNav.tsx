@@ -1,34 +1,28 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef } from "react";
+import { useEffect, useCallback } from "react";
 import { navSections, isSectionActive } from "../../lib/navigation";
+import NavIcon from "./NavIcon";
+import { ChevronDown, X } from "lucide-react";
 
 export default function MobileNav({
   open,
   onClose,
+  onLogout,
 }: {
   open: boolean;
   onClose: () => void;
+  onLogout: () => void;
 }) {
   const pathname = usePathname();
-  const panelRef = useRef<HTMLDivElement>(null);
 
   // Close on route change
   useEffect(() => {
     onClose();
   }, [pathname, onClose]);
-
-  // Close on Escape
-  useEffect(() => {
-    if (!open) return;
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-    };
-    document.addEventListener("keydown", onKeyDown);
-    return () => document.removeEventListener("keydown", onKeyDown);
-  }, [open, onClose]);
 
   // Lock body scroll when open
   useEffect(() => {
@@ -42,74 +36,73 @@ export default function MobileNav({
     };
   }, [open]);
 
+  // Close when tapping the backdrop
+  const handleBackdropClick = useCallback(
+    (e: React.MouseEvent<HTMLDivElement>) => {
+      if (e.target === e.currentTarget) onClose();
+    },
+    [onClose]
+  );
+
   if (!open) return null;
 
   return (
     <div
-      className="fixed inset-0 z-50 md:hidden"
+      className="mobile-nav-enter fixed inset-0 z-[60] flex flex-col bg-black/30 md:hidden"
       role="dialog"
       aria-modal="true"
       aria-label="Navigation menu"
+      onClick={handleBackdropClick}
     >
-      {/* Backdrop */}
-      <div
-        className="absolute inset-0 bg-black/40"
-        onClick={onClose}
-        aria-hidden="true"
-      />
-
-      {/* Panel */}
-      <div
-        ref={panelRef}
-        className="mobile-nav-enter absolute inset-x-4 top-20 mx-auto max-h-[80vh] max-w-sm overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl"
-      >
-        {/* Header */}
-        <div className="flex items-center justify-between border-b border-slate-200 px-5 py-4">
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
-            Navigation
-          </span>
-          <button
-            type="button"
-            onClick={onClose}
-            className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 transition hover:text-slate-800"
-          >
-            Close
+      <div className="flex max-h-full flex-col overflow-hidden bg-white">
+        {/* Green header bar */}
+        <div className="flex items-center justify-between bg-[#1d3528] px-6 py-4">
+          <Link href="/" onClick={onClose} className="flex items-center">
+            <Image
+              src="/images/logo-handbook-748x173.png"
+              alt="August Handbook"
+              width={100}
+              height={24}
+              className="h-6 w-[100px] brightness-0 invert"
+            />
+          </Link>
+          <button type="button" onClick={onClose} aria-label="Close menu">
+            <X size={24} className="text-white" />
           </button>
         </div>
 
-        {/* Sections */}
-        <nav className="overflow-y-auto px-5 py-4" style={{ maxHeight: "calc(80vh - 57px)" }}>
-          <div className="space-y-2">
-            {navSections.map((section) => (
+        {/* Accordion sections */}
+        <nav className="flex-1 overflow-y-auto py-2">
+          {navSections.map((section) => {
+            const isActive = isSectionActive(section, pathname);
+            return (
               <details
                 key={section.title}
                 className="group"
-                open={isSectionActive(section, pathname)}
+                open={isActive}
               >
-                <summary className="cursor-pointer list-none py-2 text-xs font-semibold uppercase tracking-[0.25em] text-slate-500">
-                  <span className="flex items-center justify-between">
+                <summary className="flex cursor-pointer list-none items-center justify-between px-6 py-[18px]">
+                  <span
+                    className={`text-[15px] font-semibold ${
+                      isActive ? "text-[#326354]" : "text-slate-800"
+                    }`}
+                  >
                     {section.title}
-                    <span className="text-slate-400 transition group-open:rotate-180">
-                      <svg
-                        viewBox="0 0 16 16"
-                        className="h-3 w-3"
-                        fill="none"
-                        aria-hidden="true"
-                      >
-                        <path
-                          d="M4 6l4 4 4-4"
-                          stroke="currentColor"
-                          strokeWidth="1"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </span>
                   </span>
+                  <ChevronDown
+                    size={18}
+                    className={`transition ${
+                      isActive
+                        ? "text-[#326354] group-open:rotate-180"
+                        : "text-slate-400 group-open:rotate-180"
+                    }`}
+                  />
                 </summary>
-                <div className="mt-1 space-y-0.5 pb-2">
+
+                {/* Expanded links */}
+                <div className="bg-[#F5F3EE] py-1">
                   {section.items.map((item) => {
-                    const isActive =
+                    const itemActive =
                       pathname === item.href ||
                       pathname.startsWith(`${item.href}/`);
                     return (
@@ -117,20 +110,45 @@ export default function MobileNav({
                         key={item.href}
                         href={item.href}
                         onClick={onClose}
-                        className={`block rounded-2xl px-3 py-2 text-sm transition ${
-                          isActive
-                            ? "bg-[#326354]/5 font-medium text-[#326354]"
-                            : "text-slate-600 hover:bg-slate-100 hover:text-slate-800"
+                        className={`flex items-center gap-3 px-10 py-[14px] text-[14px] transition ${
+                          itemActive
+                            ? "font-medium text-[#326354]"
+                            : "text-slate-800 hover:text-[#326354]"
                         }`}
                       >
+                        {item.icon && (
+                          <NavIcon
+                            name={item.icon}
+                            size={16}
+                            className="text-[#326354]"
+                          />
+                        )}
                         {item.label}
                       </Link>
                     );
                   })}
                 </div>
+
+                {/* Divider */}
+                <div className="mx-0 h-px bg-slate-200" />
               </details>
-            ))}
-          </div>
+            );
+          })}
+
+          {/* Divider before logout */}
+          <div className="mx-6 my-4 h-px bg-slate-200" />
+
+          {/* Logout */}
+          <button
+            type="button"
+            onClick={() => {
+              onClose();
+              onLogout();
+            }}
+            className="mx-6 text-left text-[14px] text-slate-400 transition hover:text-slate-600"
+          >
+            Sign out
+          </button>
         </nav>
       </div>
     </div>

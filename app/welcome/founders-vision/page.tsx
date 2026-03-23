@@ -1,54 +1,80 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function FoundersVisionPage() {
   return (
-    <div className="mt-10 grid gap-8 lg:grid-cols-[1fr_0.7fr] lg:items-start">
-      <div className="space-y-6">
-      <h1 className="text-3xl font-semibold text-slate-800">The Founders&apos; Vision</h1>
-        <div
-          className="space-y-4 text-[18px] text-slate-600 italic"
-          style={{ fontFamily: "\"Cormorant Garamond\", serif" }}
+    <div className="space-y-0">
+      {/* Page Hero */}
+      <section className="flex flex-col items-center gap-5 px-6 pb-12 pt-16 sm:pt-20">
+        <p className="text-[9px] font-medium uppercase tracking-[0.2em] text-slate-400 sm:text-[11px] sm:tracking-[0.22em]">
+          <Link href="/" className="text-slate-400 transition hover:text-slate-600">HANDBOOK</Link>
+          &nbsp;/&nbsp;
+          <Link href="/welcome" className="text-slate-400 transition hover:text-slate-600">WELCOME</Link>
+          &nbsp;/&nbsp;
+          FOUNDERS&apos; VISION
+        </p>
+        <h1
+          className="text-center text-[36px] font-normal text-slate-800 sm:text-[56px]"
+          style={{ fontFamily: "Cormorant Garamond, serif" }}
         >
-          <p>
-            &ldquo;We witnessed how difficult it was for to-be holiday homeowners to succeed
-            in buying, renovating, and managing homes in foreign countries.
-          </p>
-          <p>
-            Having delivered real estate projects for individual clients and large
-            hospitality groups across Europe, we knew with our expertise we could
-            streamline the process.
-          </p>
-          <p>
-            We created a transparent and trusted model that eliminates pain points,
-            making it much easier to enjoy the lifestyle our customers wanted.&rdquo;
-          </p>
-        </div>
-      <p className="text-lg font-semibold text-slate-500" style={{ fontFamily: "\"Cormorant Garamond\", serif" }}>&mdash; M&eacute;lie &amp; Nico</p>
-      <div className="flex justify-end">
-        <a
-          href="/welcome/the-august-ethos"
-          className="inline-flex items-center gap-2 text-xs font-normal uppercase tracking-[0.2em] text-[#326354] hover:text-[#2a5044]"
-        >
-          The August Ethos
-          <svg aria-hidden="true" viewBox="0 0 20 20" className="h-4 w-4" fill="none">
-            <path
-              d="M17.5 10L11.25 3.75L10.3688 4.63125L15.1063 9.375L2.5 9.375L2.5 10.625L15.1063 10.625L10.3688 15.3687L11.25 16.25L17.5 10Z"
-              fill="currentColor"
+          The Founders&apos; Vision
+        </h1>
+        <p className="text-center text-[13px] leading-[1.7] text-slate-400 sm:text-[15px]">
+          How Mélie &amp; Nico set out to transform
+          <br />
+          European holiday home ownership.
+        </p>
+        <div className="h-px w-10 bg-slate-200 sm:w-[60px]" />
+      </section>
+
+      {/* Founders Row */}
+      <section className="mx-auto max-w-[1040px] px-6 pb-16 sm:px-12">
+        <div className="grid items-center gap-10 lg:grid-cols-[460px_1fr]">
+          {/* Photo */}
+          <div className="relative h-[420px] overflow-hidden rounded-2xl sm:h-[560px]">
+            <Image
+              src="/images/founders-melie_and_nico.avif"
+              alt="Founders Mélie and Nico"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 460px"
+              priority
             />
-          </svg>
-        </a>
-      </div>
-    </div>
-      <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
-        <Image
-          src="/images/founders-melie_and_nico.avif"
-          alt="Founders Melie and Nico"
-          width={520}
-          height={720}
-          className="h-full w-full object-cover"
-          sizes="(max-width: 1024px) 100vw, 40vw"
-          priority
-        />
+          </div>
+
+          {/* Quote */}
+          <div className="space-y-8">
+            <p className="text-[14px] leading-[1.8] text-slate-500 sm:text-[15px]">
+              &ldquo;We witnessed how difficult it was for to-be holiday
+              homeowners to succeed in buying, renovating, and managing homes in
+              foreign countries.
+            </p>
+            <p className="text-[14px] leading-[1.8] text-slate-500 sm:text-[15px]">
+              Having delivered real estate projects for individual clients and
+              large hospitality groups across Europe, we knew with our expertise
+              we could streamline the process.
+            </p>
+            <p className="text-[14px] leading-[1.8] text-slate-500 sm:text-[15px]">
+              We created a transparent and trusted model that eliminates pain
+              points, making it much easier to enjoy the lifestyle our customers
+              wanted.&rdquo;
+            </p>
+            <p className="text-[14px] font-semibold tracking-wide text-[#326354]">
+              — Mélie &amp; Nico
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Read Next */}
+      <div className="mx-auto max-w-[1040px] border-t border-slate-200 px-6 py-10 text-right sm:px-12">
+        <Link
+          href="/welcome/the-august-ethos"
+          className="group inline-flex items-center gap-2 text-[14px] font-medium text-slate-500 transition hover:text-slate-800 sm:text-[15px]"
+        >
+          Read &lsquo;The August Ethos&rsquo; next
+          <span className="transition group-hover:translate-x-1">&rarr;</span>
+        </Link>
       </div>
     </div>
   );

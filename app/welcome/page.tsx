@@ -1,87 +1,89 @@
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+
+const cards = [
+  {
+    href: "/welcome/founders-vision",
+    title: "Founders' Vision",
+    body: "Understand the Why behind August and the model we built together.",
+  },
+  {
+    href: "/welcome/the-august-ethos",
+    title: "The August Ethos",
+    body: "Dive into the August ethos and what makes our community so special.",
+  },
+  {
+    href: "/welcome/our-values",
+    title: "Our Values",
+    body: "The principles that guide how we work, lead, and show up every day.",
+  },
+  {
+    href: "/wiki/new-starters",
+    title: "Onboarding",
+    body: "Your onboarding timeline, training, and check-ins for new starters.",
+  },
+];
 
 export default function WelcomePage() {
   return (
-    <div className="mt-4 space-y-10">
-      <section className="overflow-hidden rounded-[32px]">
-        <div className="grid gap-0 lg:grid-cols-[1.1fr_0.9fr]">
-          <div className="p-8 lg:p-12">
-            <h1 className="text-[36px] font-semibold text-slate-800">Welcome</h1>
-            <div className="mt-3 space-y-3 text-sm text-slate-600">
-              <p>
-                Welcome. August is the premier co-ownership platform for European
-                holiday homes. This August Handbook is our company wiki for new
-                starters and staff alike, to learn more about the company and its
-                respective policies, process and goals.
-              </p>
-              <p>Use the navigation to explore the handbook and its information.</p>
-            </div>
-          </div>
-          <div className="relative min-h-[320px]">
-            <Image
-              src="/images/SP9_64.avif"
-              alt="August collection"
-              fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 45vw"
-              priority
-            />
-          </div>
-        </div>
+    <div className="space-y-0">
+      {/* Page Hero */}
+      <section className="flex flex-col items-center gap-5 px-6 pb-12 pt-16 sm:pt-20">
+        <p className="text-[9px] font-medium uppercase tracking-[0.2em] text-slate-400 sm:text-[11px] sm:tracking-[0.22em]">
+          <Link href="/" className="text-slate-400 transition hover:text-slate-600">HANDBOOK</Link>
+        </p>
+        <h1
+          className="text-center text-[36px] font-normal text-slate-800 sm:text-[56px]"
+          style={{ fontFamily: "Cormorant Garamond, serif" }}
+        >
+          Welcome
+        </h1>
+        <p className="text-center text-[13px] leading-[1.7] text-slate-400 sm:text-[15px]">
+          Get to know August — our story, values,
+          <br />
+          and the ethos behind everything we do.
+        </p>
+        <div className="h-px w-10 bg-slate-200 sm:w-[60px]" />
       </section>
 
-      <section className="space-y-4">
-        <hr className="mx-auto w-1/2 border-[#2a5044]" />
-        <div className="grid gap-6 md:grid-cols-2">
-          {[
-            {
-              href: "/welcome/founders-vision",
-              title: "Founders' Vision",
-              body: "Understand the Why behind August and the model we built.",
-            },
-            {
-              href: "/welcome/the-august-ethos",
-              title: "The August Ethos",
-              body: "Dive into the August ethos and what makes our community special.",
-            },
-            {
-              href: "/welcome/our-values",
-              title: "Our Values",
-              body: "The principles that guide how we work and show up.",
-            },
-            {
-              href: "/wiki/new-starters",
-              title: "Onboarding",
-              body: "Your onboarding timeline, training, and check-ins.",
-            },
-          ].map((item) => (
+      {/* Hero Image — full bleed mobile, capped at 1440px desktop */}
+      <div className="relative ml-[calc(50%-50vw)] h-[260px] w-screen overflow-hidden sm:ml-[-24px] sm:mr-[-24px] sm:h-[480px] sm:w-[calc(100%+48px)]">
+        <Image
+          src="/images/welcome-hero-1080x720.jpg"
+          alt="European countryside estate"
+          fill
+          className="object-cover"
+          sizes="(max-width: 768px) 100vw, 1440px"
+          priority
+        />
+      </div>
+
+      {/* Cards */}
+      <div className="mx-auto max-w-[1040px] space-y-8 px-6 py-16">
+        <div className="grid gap-8 sm:grid-cols-2">
+          {cards.map((card) => (
             <Link
-              key={item.title}
-              href={item.href}
-              className="group flex flex-col rounded-3xl p-6 transition hover:-translate-y-0.5"
+              key={card.href}
+              href={card.href}
+              className="group block rounded-2xl bg-[#eae6e1] px-8 py-9 transition hover:-translate-y-0.5"
             >
-              <h3 className="text-lg font-semibold text-slate-800">{item.title}</h3>
-              <p className="mt-2 text-sm text-slate-500">{item.body}</p>
-              <span className="mt-4 inline-flex items-center gap-2 text-xs font-normal uppercase tracking-[0.2em] text-[#326354] hover:text-[#2a5044]">
-                Read More
-                <svg
-                  aria-hidden="true"
-                  viewBox="0 0 20 20"
-                  className="h-4 w-4"
-                  fill="none"
-                >
-                  <path
-                    d="M17.5 10L11.25 3.75L10.3688 4.63125L15.1063 9.375L2.5 9.375L2.5 10.625L15.1063 10.625L10.3688 15.3687L11.25 16.25L17.5 10Z"
-                    fill="currentColor"
-                  />
-                </svg>
+              <h2
+                className="text-[24px] font-semibold text-slate-800"
+                style={{ fontFamily: "Cormorant Garamond, serif" }}
+              >
+                {card.title}
+              </h2>
+              <div className="mt-3 h-0.5 w-8 bg-[#326354]" />
+              <p className="mt-3 text-[14px] leading-[1.7] text-slate-500">
+                {card.body}
+              </p>
+              <span className="mt-4 inline-block text-[11px] font-medium uppercase tracking-[0.22em] text-[#326354]">
+                READ MORE →
               </span>
             </Link>
           ))}
         </div>
-      </section>
-
+      </div>
     </div>
   );
 }

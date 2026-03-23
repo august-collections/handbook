@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const regions = [
   {
@@ -133,41 +134,78 @@ const regions = [
 
 export default function RegionsPage() {
   return (
-    <div className="mt-10 space-y-12">
-      <h1 className="text-3xl font-semibold text-slate-800">Our Regions</h1>
-      <div className="space-y-12">
-        {regions.map((region, index) => {
-          const isEven = index % 2 === 0;
-          return (
-            <div
-              key={region.title}
-              className="grid items-start gap-8 lg:grid-cols-[1.1fr_0.9fr]"
-            >
-              <div className={isEven ? "order-1" : "order-2"}>
-                <p className="text-xs font-semibold uppercase tracking-[0.4em] text-slate-500">
-                  {region.title}
-                </p>
-                <h2 className="mt-3 text-2xl font-semibold text-slate-800">{region.subtitle}</h2>
-                <div className="mt-4 space-y-4 text-sm text-slate-600">
-                  {region.paragraphs.map((paragraph) => (
-                    <p key={paragraph}>{paragraph}</p>
-                  ))}
+    <div className="space-y-0">
+      {/* Hero */}
+      <section className="flex flex-col items-center gap-5 px-6 pb-12 pt-16 sm:pt-20">
+        <p className="text-[9px] font-medium uppercase tracking-[0.2em] text-slate-400 sm:text-[11px] sm:tracking-[0.22em]">
+          <Link href="/" className="text-slate-400 transition hover:text-slate-600">HANDBOOK</Link>
+          &nbsp;/&nbsp;
+          <Link href="/wiki" className="text-slate-400 transition hover:text-slate-600">WIKI</Link>
+          &nbsp;/&nbsp;
+          REGIONS
+        </p>
+        <h1
+          className="text-center text-[36px] font-normal text-slate-800 sm:text-[56px]"
+          style={{ fontFamily: "Cormorant Garamond, serif" }}
+        >
+          Regions
+        </h1>
+        <p className="max-w-[520px] text-center text-[13px] leading-[1.7] text-slate-400 sm:text-[15px] whitespace-pre-line">
+          {"Location guides for Provence, Mallorca,\nTuscany, and beyond."}
+        </p>
+        <div className="h-px w-10 bg-slate-200 sm:w-[60px]" />
+      </section>
+
+      {/* Content */}
+      <div className="mx-auto max-w-[1040px] space-y-16 px-6 py-16">
+        {/* Section Label & Heading */}
+        <section className="space-y-4">
+          <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-slate-400">
+            DESTINATIONS
+          </p>
+          <h2
+            className="text-[28px] font-semibold text-slate-800"
+            style={{ fontFamily: "Cormorant Garamond, serif" }}
+          >
+            Our Regions
+          </h2>
+        </section>
+
+        {/* Region Cards Grid */}
+        <section>
+          <div className="grid gap-6 sm:grid-cols-2">
+            {regions.map((region) => (
+              <div
+                key={region.title}
+                className="overflow-hidden rounded-2xl bg-[#eae6e1]"
+              >
+                <Image
+                  src={region.image}
+                  alt={region.subtitle}
+                  width={520}
+                  height={320}
+                  className="h-[220px] w-full object-cover"
+                />
+                <div className="space-y-3 px-5 py-5">
+                  <p className="text-[10px] font-medium uppercase tracking-[0.3em] text-[#326354]">
+                    {region.title}
+                  </p>
+                  <h3
+                    className="text-[20px] font-semibold text-slate-800"
+                    style={{ fontFamily: "Cormorant Garamond, serif" }}
+                  >
+                    {region.subtitle}
+                  </h3>
+                  <div className="space-y-3 text-[14px] leading-[1.8] text-slate-500">
+                    {region.paragraphs.map((paragraph) => (
+                      <p key={paragraph}>{paragraph}</p>
+                    ))}
+                  </div>
                 </div>
               </div>
-              <div className={isEven ? "order-2" : "order-1"}>
-                <div className="overflow-hidden rounded-3xl border border-[#d8d0c8] bg-[#e7e1db]">
-                  <Image
-                    src={region.image}
-                    alt={region.subtitle}
-                    width={560}
-                    height={420}
-                    className="h-full min-h-[320px] w-full object-cover"
-                  />
-                </div>
-              </div>
-            </div>
-          );
-        })}
+            ))}
+          </div>
+        </section>
       </div>
     </div>
   );

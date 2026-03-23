@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const brandColors = [
   { name: "August Green", hex: "#326354", textLight: true },
@@ -11,62 +12,70 @@ const brandColors = [
 
 export default function BrandingIdentityPage() {
   return (
-    <div className="mt-10 space-y-10">
-      {/* Header */}
-      <div className="space-y-2">
-        <h1 className="text-3xl font-semibold text-slate-800">
+    <div className="space-y-0">
+      {/* Page Hero */}
+      <section className="flex flex-col items-center gap-5 px-6 pb-12 pt-16 sm:pt-20">
+        <p className="text-[9px] font-medium uppercase tracking-[0.2em] text-slate-400 sm:text-[11px] sm:tracking-[0.22em]">
+          <Link href="/" className="text-slate-400 transition hover:text-slate-600">HANDBOOK</Link>
+          &nbsp;/&nbsp;
+          <Link href="/wiki" className="text-slate-400 transition hover:text-slate-600">WIKI</Link>
+          &nbsp;/&nbsp;
+          BRANDING &amp; IDENTITY
+        </p>
+        <h1
+          className="text-center text-[36px] font-normal text-slate-800 sm:text-[56px]"
+          style={{ fontFamily: "Cormorant Garamond, serif" }}
+        >
           Branding &amp; Identity
         </h1>
-        <p className="text-sm text-slate-500">
-          Guidelines and assets to represent August consistently.
+        <p className="text-center text-[13px] leading-[1.7] text-slate-400 sm:text-[15px]">
+          Guidelines and assets to represent
+          <br />
+          August consistently.
         </p>
-      </div>
+        <div className="h-px w-10 bg-slate-200 sm:w-[60px]" />
+      </section>
 
-      {/* Brand Book */}
-      <section className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
-          Brand Book
-        </p>
-        <h2 className="mt-2 text-lg font-semibold text-slate-800">
-          The August Brand
-        </h2>
-        <p className="mt-2 text-sm text-slate-600">
-          Our brand book is the definitive guide to how August looks, feels, and
-          speaks. Review it before creating any branded materials.
-        </p>
-
-        <div className="mt-6 flex flex-col gap-6 sm:flex-row sm:items-start">
-          <a
-            href="https://drive.google.com/file/d/1sJirfUr4AEVUBzHfACrxSxVxq7Z5aFrc/view?usp=drive_link"
-            target="_blank"
-            rel="noreferrer"
-            className="block w-full max-w-[200px] shrink-0 transition-transform hover:scale-[1.02]"
-          >
-            <Image
-              src="/images/august-brand_book-cover.png"
-              alt="August brand book cover"
-              width={520}
-              height={700}
-              className="h-auto w-full rounded-2xl border border-slate-200 shadow-sm"
-            />
-          </a>
-
-          <div className="space-y-3 text-sm text-slate-600">
-            <p className="font-semibold text-slate-800">
-              What&apos;s inside
+      {/* Content */}
+      <div className="mx-auto max-w-[800px] space-y-16 px-6 py-16">
+        {/* Brand Book */}
+        <section id="brand-book" className="space-y-6 scroll-mt-24">
+          <div className="space-y-3">
+            <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-slate-400 sm:text-[11px]">
+              BRAND BOOK
             </p>
-            <ul className="list-inside list-disc space-y-1.5">
-              <li>Logo usage, placement, and clear-space rules</li>
-              <li>Colour palette with primary and secondary tones</li>
-              <li>Typography hierarchy and pairing guidance</li>
-              <li>Photography style and image treatment</li>
-              <li>Tone of voice and messaging principles</li>
-            </ul>
+            <h2
+              className="text-[24px] font-semibold text-slate-800 sm:text-[28px]"
+              style={{ fontFamily: "Cormorant Garamond, serif" }}
+            >
+              The August Brand
+            </h2>
+            <p className="text-[14px] leading-[1.8] text-slate-500 sm:text-[15px]">
+              Our brand book is the definitive guide to how August looks, feels,
+              and speaks. Review it before creating any branded materials.
+            </p>
+          </div>
+
+          <div className="flex flex-col items-center gap-4">
             <a
               href="https://drive.google.com/file/d/1sJirfUr4AEVUBzHfACrxSxVxq7Z5aFrc/view?usp=drive_link"
               target="_blank"
               rel="noreferrer"
-              className="mt-2 inline-flex items-center gap-2 rounded-full bg-[#326354] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#2a5044]"
+              className="block w-[200px] transition-transform hover:scale-[1.02]"
+            >
+              <Image
+                src="/images/august-brand_book-cover.png"
+                alt="August brand book cover"
+                width={520}
+                height={700}
+                className="h-auto w-full rounded-xl shadow-md"
+              />
+            </a>
+            <a
+              href="https://drive.google.com/file/d/1sJirfUr4AEVUBzHfACrxSxVxq7Z5aFrc/view?usp=drive_link"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-[#326354] px-5 py-2.5 text-[13px] font-semibold text-white transition-colors hover:bg-[#2a5044]"
             >
               <svg
                 className="h-4 w-4"
@@ -84,251 +93,274 @@ export default function BrandingIdentityPage() {
               View Brand Book
             </a>
           </div>
-        </div>
-      </section>
 
-      {/* Typography */}
-      <section className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
-          Typography
-        </p>
-        <h2 className="mt-2 text-lg font-semibold text-slate-800">
-          Fonts &amp; Type Hierarchy
-        </h2>
-        <p className="mt-2 text-sm text-slate-600">
-          Consistent typography reinforces our brand across every touchpoint.
-          Always use these typefaces in branded materials.
-        </p>
-
-        <div className="mt-6 grid gap-6 md:grid-cols-2">
-          <div className="rounded-2xl border border-slate-100 bg-slate-50/50 p-5">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
-              Headings
-            </p>
-            <p
-              className="mt-3 text-2xl text-slate-800"
-              style={{ fontFamily: "'Cormorant Garamond', serif" }}
-            >
-              Cormorant Garamond
-            </p>
-            <p
-              className="mt-1 text-sm text-slate-500"
-              style={{ fontFamily: "'Cormorant Garamond', serif" }}
-            >
-              AaBbCcDdEeFfGg 0123456789
-            </p>
-            <a
-              href="https://fonts.google.com/specimen/Cormorant+Garamond"
-              target="_blank"
-              rel="noreferrer"
-              className="mt-3 inline-block text-xs font-semibold text-[#326354] hover:text-[#2a5044]"
-            >
-              View on Google Fonts &rarr;
-            </a>
-          </div>
-
-          <div className="rounded-2xl border border-slate-100 bg-slate-50/50 p-5">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
-              Body Text
-            </p>
-            <p className="mt-3 text-2xl text-slate-800">Plus Jakarta Sans</p>
-            <p className="mt-1 text-sm text-slate-500">
-              AaBbCcDdEeFfGg 0123456789
-            </p>
-            <a
-              href="https://fonts.google.com/specimen/Plus+Jakarta+Sans"
-              target="_blank"
-              rel="noreferrer"
-              className="mt-3 inline-block text-xs font-semibold text-[#326354] hover:text-[#2a5044]"
-            >
-              View on Google Fonts &rarr;
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Colour Palette */}
-      <section className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
-          Colour Palette
-        </p>
-        <h2 className="mt-2 text-lg font-semibold text-slate-800">
-          Brand Colours
-        </h2>
-        <p className="mt-2 text-sm text-slate-600">
-          Use the palette established in the brand book. These are the core
-          colours that define August&apos;s visual identity.
-        </p>
-
-        <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
-          {brandColors.map((color) => (
-            <div key={color.hex} className="text-center">
-              <div
-                className="mx-auto aspect-square w-full max-w-[100px] rounded-2xl border border-slate-200 shadow-sm"
-                style={{ backgroundColor: color.hex }}
-              />
-              <p className="mt-2 text-xs font-semibold text-slate-700">
-                {color.name}
-              </p>
-              <p className="font-mono text-[11px] uppercase text-slate-400">
-                {color.hex}
-              </p>
+          <div className="overflow-hidden rounded-2xl bg-[#eae6e1]">
+            <div className="p-8 sm:p-10">
+              <div className="space-y-4">
+                <p className="text-[14px] font-semibold text-slate-800">
+                  What&apos;s inside
+                </p>
+                <ul className="list-inside list-disc space-y-2 text-[14px] leading-[1.7] text-slate-500">
+                  <li>Logo usage, placement, and clear-space rules</li>
+                  <li>Colour palette with primary and secondary tones</li>
+                  <li>Typography hierarchy and pairing guidance</li>
+                  <li>Photography style and image treatment</li>
+                  <li>Tone of voice and messaging principles</li>
+                </ul>
+              </div>
             </div>
-          ))}
-        </div>
-      </section>
+          </div>
+        </section>
 
-      {/* Logo Usage Guidelines */}
-      <section className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
-          Guidelines
-        </p>
-        <h2 className="mt-2 text-lg font-semibold text-slate-800">
-          Logo Usage
-        </h2>
-        <p className="mt-2 text-sm text-slate-600">
-          The August logo is our most recognisable asset. Follow these rules to
-          keep it looking its best.
-        </p>
+        <hr className="border-slate-200" />
 
-        <div className="mt-6 grid gap-4 md:grid-cols-2">
-          <div className="flex items-center justify-center rounded-2xl border border-slate-100 bg-slate-50/50 p-8">
-            <Image
-              src="/guides/logo-august-script-2596x827.png"
-              alt="August script logo"
-              width={2596}
-              height={827}
-              className="h-auto w-full max-w-md"
-            />
+        {/* Typography */}
+        <section id="typography" className="space-y-6 scroll-mt-24">
+          <div className="space-y-3">
+            <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-slate-400 sm:text-[11px]">
+              TYPOGRAPHY
+            </p>
+            <h2
+              className="text-[24px] font-semibold text-slate-800 sm:text-[28px]"
+              style={{ fontFamily: "Cormorant Garamond, serif" }}
+            >
+              Fonts &amp; Type Hierarchy
+            </h2>
+            <p className="text-[14px] leading-[1.8] text-slate-500 sm:text-[15px]">
+              Consistent typography reinforces our brand across every touchpoint.
+              Always use these typefaces in branded materials.
+            </p>
           </div>
-          <div className="flex items-center justify-center rounded-2xl bg-[#2a5044] p-8">
-            <Image
-              src="/guides/logo-august-script-2596x827.png"
-              alt="August script logo on dark background"
-              width={2596}
-              height={827}
-              className="h-auto w-full max-w-md brightness-0 invert"
-            />
-          </div>
-          <div className="flex items-center justify-center rounded-2xl border border-slate-100 bg-slate-50/50 p-8">
-            <Image
-              src="/guides/logo-a-script-222x176.png"
-              alt="August A script logo"
-              width={222}
-              height={176}
-              className="h-auto w-full max-w-[111px]"
-            />
-          </div>
-          <div className="flex items-center justify-center rounded-2xl bg-[#2a5044] p-8">
-            <Image
-              src="/guides/logo-a-script-222x176.png"
-              alt="August A script logo on dark background"
-              width={222}
-              height={176}
-              className="h-auto w-full max-w-[111px] brightness-0 invert"
-            />
-          </div>
-        </div>
 
-        <div className="mt-6 grid gap-6 md:grid-cols-2">
-          <div>
-            <p className="text-sm font-semibold text-green-700">Do</p>
-            <ul className="mt-2 list-inside list-disc space-y-1.5 text-sm text-slate-600">
-              <li>Use the logo files provided in the brand book</li>
-              <li>Maintain clear space around the logo</li>
-              <li>Use approved colour variations only</li>
-              <li>Scale proportionally — never stretch or distort</li>
-            </ul>
-          </div>
-          <div>
-            <p className="text-sm font-semibold text-red-600">Don&apos;t</p>
-            <ul className="mt-2 list-inside list-disc space-y-1.5 text-sm text-slate-600">
-              <li>Alter the logo colours or add effects</li>
-              <li>Place the logo on busy or clashing backgrounds</li>
-              <li>Recreate or approximate the logo with other fonts</li>
-              <li>Use outdated versions of the logo</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* Assets & Downloads */}
-      <section className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
-          Assets
-        </p>
-        <h2 className="mt-2 text-lg font-semibold text-slate-800">
-          Downloads &amp; Resources
-        </h2>
-        <p className="mt-2 text-sm text-slate-600">
-          Approved brand assets for use across digital and print. Always use the
-          latest files from these links.
-        </p>
-
-        <div className="mt-6 grid gap-4 sm:grid-cols-2">
-          <a
-            href="https://drive.google.com/file/d/1sJirfUr4AEVUBzHfACrxSxVxq7Z5aFrc/view?usp=drive_link"
-            target="_blank"
-            rel="noreferrer"
-            className="flex items-center gap-4 rounded-2xl border border-slate-100 bg-slate-50/50 p-4 transition-colors hover:border-[#326354]/30 hover:bg-[#326354]/5"
-          >
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#326354]/10 text-[#326354]">
-              <svg
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
+          <div className="grid gap-6 sm:grid-cols-2">
+            <div className="rounded-2xl bg-[#eae6e1] p-7">
+              <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-slate-400 sm:text-[11px]">
+                Headings
+              </p>
+              <p
+                className="mt-4 text-[24px] text-slate-800"
+                style={{ fontFamily: "'Cormorant Garamond', serif" }}
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"
-                />
-              </svg>
+                Cormorant Garamond
+              </p>
+              <p
+                className="mt-1 text-[14px] text-slate-500"
+                style={{ fontFamily: "'Cormorant Garamond', serif" }}
+              >
+                AaBbCcDdEeFfGg 0123456789
+              </p>
+              <a
+                href="https://fonts.google.com/specimen/Cormorant+Garamond"
+                target="_blank"
+                rel="noreferrer"
+                className="mt-4 inline-block text-[11px] font-medium uppercase tracking-[0.22em] text-[#326354] transition hover:text-[#2a5044]"
+              >
+                VIEW ON GOOGLE FONTS →
+              </a>
             </div>
-            <div>
-              <p className="text-sm font-semibold text-slate-800">
+
+            <div className="rounded-2xl bg-[#eae6e1] p-7">
+              <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-slate-400 sm:text-[11px]">
+                Body Text
+              </p>
+              <p className="mt-4 text-[24px] text-slate-800">
+                Plus Jakarta Sans
+              </p>
+              <p className="mt-1 text-[14px] text-slate-500">
+                AaBbCcDdEeFfGg 0123456789
+              </p>
+              <a
+                href="https://fonts.google.com/specimen/Plus+Jakarta+Sans"
+                target="_blank"
+                rel="noreferrer"
+                className="mt-4 inline-block text-[11px] font-medium uppercase tracking-[0.22em] text-[#326354] transition hover:text-[#2a5044]"
+              >
+                VIEW ON GOOGLE FONTS →
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <hr className="border-slate-200" />
+
+        {/* Colour Palette */}
+        <section id="colour-palette" className="space-y-6 scroll-mt-24">
+          <div className="space-y-3">
+            <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-slate-400 sm:text-[11px]">
+              COLOUR PALETTE
+            </p>
+            <h2
+              className="text-[24px] font-semibold text-slate-800 sm:text-[28px]"
+              style={{ fontFamily: "Cormorant Garamond, serif" }}
+            >
+              Brand Colours
+            </h2>
+            <p className="text-[14px] leading-[1.8] text-slate-500 sm:text-[15px]">
+              Use the palette established in the brand book. These are the core
+              colours that define August&apos;s visual identity.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-3 gap-4 sm:grid-cols-6">
+            {brandColors.map((color) => (
+              <div key={color.hex} className="text-center">
+                <div
+                  className={`mx-auto aspect-square w-full rounded-2xl ${
+                    color.hex === "#ffffff" ? "border border-slate-200" : ""
+                  }`}
+                  style={{ backgroundColor: color.hex }}
+                />
+                <p className="mt-2 text-[12px] font-semibold text-slate-700">
+                  {color.name}
+                </p>
+                <p className="font-mono text-[11px] uppercase text-slate-400">
+                  {color.hex}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <hr className="border-slate-200" />
+
+        {/* Logo Usage */}
+        <section id="guidelines" className="space-y-6 scroll-mt-24">
+          <div className="space-y-3">
+            <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-slate-400 sm:text-[11px]">
+              GUIDELINES
+            </p>
+            <h2
+              className="text-[24px] font-semibold text-slate-800 sm:text-[28px]"
+              style={{ fontFamily: "Cormorant Garamond, serif" }}
+            >
+              Logo Usage
+            </h2>
+            <p className="text-[14px] leading-[1.8] text-slate-500 sm:text-[15px]">
+              The August logo is our most recognisable asset. Follow these rules
+              to keep it looking its best.
+            </p>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div className="flex items-center justify-center rounded-2xl bg-[#eae6e1] p-8">
+              <Image
+                src="/guides/logo-august-script-2596x827.png"
+                alt="August script logo"
+                width={2596}
+                height={827}
+                className="h-auto w-full max-w-md"
+              />
+            </div>
+            <div className="flex items-center justify-center rounded-2xl bg-[#2a5044] p-8">
+              <Image
+                src="/guides/logo-august-script-2596x827.png"
+                alt="August script logo on dark background"
+                width={2596}
+                height={827}
+                className="h-auto w-full max-w-md brightness-0 invert"
+              />
+            </div>
+            <div className="flex items-center justify-center rounded-2xl bg-[#eae6e1] p-8">
+              <Image
+                src="/guides/logo-a-script-222x176.png"
+                alt="August A script logo"
+                width={222}
+                height={176}
+                className="h-auto w-full max-w-[111px]"
+              />
+            </div>
+            <div className="flex items-center justify-center rounded-2xl bg-[#2a5044] p-8">
+              <Image
+                src="/guides/logo-a-script-222x176.png"
+                alt="August A script logo on dark background"
+                width={222}
+                height={176}
+                className="h-auto w-full max-w-[111px] brightness-0 invert"
+              />
+            </div>
+          </div>
+
+          <div className="grid gap-8 sm:grid-cols-2">
+            <div className="space-y-3">
+              <p className="text-[14px] font-semibold text-[#326354]">Do</p>
+              <ul className="list-inside list-disc space-y-2 text-[14px] leading-[1.7] text-slate-500">
+                <li>Use the logo files provided in the brand book</li>
+                <li>Maintain clear space around the logo</li>
+                <li>Use approved colour variations only</li>
+                <li>Scale proportionally — never stretch or distort</li>
+              </ul>
+            </div>
+            <div className="space-y-3">
+              <p className="text-[14px] font-semibold text-red-500">Don&apos;t</p>
+              <ul className="list-inside list-disc space-y-2 text-[14px] leading-[1.7] text-slate-500">
+                <li>Alter the logo colours or add effects</li>
+                <li>Place the logo on busy or clashing backgrounds</li>
+                <li>Recreate or approximate the logo with other fonts</li>
+                <li>Use outdated versions of the logo</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <hr className="border-slate-200" />
+
+        {/* Assets & Downloads */}
+        <section id="assets" className="space-y-6 scroll-mt-24">
+          <div className="space-y-3">
+            <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-slate-400 sm:text-[11px]">
+              ASSETS
+            </p>
+            <h2
+              className="text-[24px] font-semibold text-slate-800 sm:text-[28px]"
+              style={{ fontFamily: "Cormorant Garamond, serif" }}
+            >
+              Downloads &amp; Resources
+            </h2>
+            <p className="text-[14px] leading-[1.8] text-slate-500 sm:text-[15px]">
+              Approved brand assets for use across digital and print. Always use
+              the latest files from these links.
+            </p>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            <a
+              href="https://drive.google.com/file/d/1sJirfUr4AEVUBzHfACrxSxVxq7Z5aFrc/view?usp=drive_link"
+              target="_blank"
+              rel="noreferrer"
+              className="group block rounded-2xl bg-[#eae6e1] px-7 py-6 transition hover:-translate-y-0.5"
+            >
+              <p className="text-[14px] font-semibold text-slate-800">
                 Brand Book
               </p>
-              <p className="text-xs text-slate-500">
+              <div className="mt-2 h-0.5 w-8 bg-[#326354]" />
+              <p className="mt-2 text-[13px] leading-[1.7] text-slate-500">
                 Full brand guidelines PDF
               </p>
-            </div>
-          </a>
+              <span className="mt-3 inline-block text-[11px] font-medium uppercase tracking-[0.22em] text-[#326354]">
+                DOWNLOAD →
+              </span>
+            </a>
 
-          <a
-            href="https://drive.google.com/drive/folders/1LTH6wC7HROneCfoYbCy8Iciidp5C2uGy"
-            target="_blank"
-            rel="noreferrer"
-            className="flex items-center gap-4 rounded-2xl border border-slate-100 bg-slate-50/50 p-4 transition-colors hover:border-[#326354]/30 hover:bg-[#326354]/5"
-          >
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#326354]/10 text-[#326354]">
-              <svg
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0 0 22.5 18.75V5.25A2.25 2.25 0 0 0 20.25 3H3.75A2.25 2.25 0 0 0 1.5 5.25v13.5A2.25 2.25 0 0 0 3.75 21Z"
-                />
-              </svg>
-            </div>
-            <div>
-              <p className="text-sm font-semibold text-slate-800">
+            <a
+              href="https://drive.google.com/drive/folders/1LTH6wC7HROneCfoYbCy8Iciidp5C2uGy"
+              target="_blank"
+              rel="noreferrer"
+              className="group block rounded-2xl bg-[#eae6e1] px-7 py-6 transition hover:-translate-y-0.5"
+            >
+              <p className="text-[14px] font-semibold text-slate-800">
                 LinkedIn Banners
               </p>
-              <p className="text-xs text-slate-500">
+              <div className="mt-2 h-0.5 w-8 bg-[#326354]" />
+              <p className="mt-2 text-[13px] leading-[1.7] text-slate-500">
                 Profile banners for the team
               </p>
-            </div>
-          </a>
-        </div>
-      </section>
+              <span className="mt-3 inline-block text-[11px] font-medium uppercase tracking-[0.22em] text-[#326354]">
+                DOWNLOAD →
+              </span>
+            </a>
+          </div>
+        </section>
+      </div>
     </div>
   );
 }

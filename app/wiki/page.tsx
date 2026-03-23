@@ -1,52 +1,82 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const topics = [
-  { href: "/wiki/branding-and-identity", title: "Branding & Identity", body: "Brand guidelines, fonts, colours, and LinkedIn banners." },
-  { href: "/wiki/collections", title: "Collections", body: "Our 5 collection types and the internal roadmap." },
-  { href: "/wiki/financials", title: "Financials", body: "Revenue model, sources of capital, and financial structure." },
-  { href: "/wiki/homeowners", title: "Homeowners", body: "Homeowner journey, experience, and access schedules." },
-  { href: "/wiki/how-to", title: "How To", body: "Step-by-step instructions for everyday workflows." },
-  { href: "/wiki/how-we-work", title: "How We Work", body: "Quarterly presentations, cadences, and leadership expectations." },
-  { href: "/wiki/hr-and-people", title: "HR & People", body: "HR support, wellbeing, IT help, and the company handbook." },
-  { href: "/wiki/legal", title: "Legal", body: "Legal onboarding and the acquisition process." },
-  { href: "/wiki/new-starters", title: "New Starters", body: "Onboarding timeline, first 90 days, and manager responsibilities." },
-  { href: "/wiki/regions", title: "Regions", body: "Explore our 10 European destinations." },
-  { href: "/wiki/related-brands", title: "Related Brands", body: "Villa Valeria, Rio London, and Anam Capital." },
-  { href: "/wiki/resources", title: "Resources", body: "Webinar recordings and live session information." },
-  { href: "/wiki/team", title: "Team", body: "Executive team, department heads, and org chart." },
+  { href: "/wiki/branding-and-identity", title: "Branding & Identity", body: "Logo usage, tone of voice, visual identity and brand guidelines." },
+  { href: "/wiki/collections", title: "Collections", body: "Everything about our Collections — locations, homes, and what makes each one unique." },
+  { href: "/wiki/financials", title: "Financials", body: "Revenue models, pricing structures, and financial reporting." },
+  { href: "/wiki/homeowners", title: "Homeowners", body: "Owner profiles, communication standards, and homeowner experience." },
+  { href: "/wiki/how-to", title: "How To", body: "Step-by-step guides for common tasks, tools, and internal workflows." },
+  { href: "/wiki/how-we-work", title: "How We Work", body: "Our ways of working, meeting cadences, and team rituals." },
+  { href: "/wiki/hr-and-people", title: "HR & People", body: "Policies, benefits, leave, and everything people-related." },
+  { href: "/wiki/legal", title: "Legal", body: "Contracts, compliance, and legal frameworks across regions." },
+  { href: "/wiki/new-starters", title: "New Starters", body: "First-day essentials, onboarding checklists, and starter resources." },
+  { href: "/wiki/regions", title: "Regions", body: "Location guides for Provence, Mallorca, Tuscany, and beyond." },
+  { href: "/wiki/related-brands", title: "Related Brands", body: "Partner brands, affiliated services, and the wider August ecosystem." },
+  { href: "/wiki/resources", title: "Resources", body: "Templates, assets, downloads, and shared team resources." },
+  { href: "/wiki/team", title: "Team", body: "Meet the team — roles, departments, and who does what at August." },
 ];
 
 export default function WikiPage() {
   return (
-    <div className="mt-4 space-y-6">
-      <div className="p-6">
-        <h1 className="text-lg font-semibold text-slate-800">Wiki</h1>
-        <hr className="mt-2 border-t-[0.7px] border-slate-300" />
-        <p className="mt-2 text-sm text-slate-500">
-          Explore company knowledge, operations, and resources.
+    <div className="space-y-0">
+      {/* Page Hero */}
+      <section className="flex flex-col items-center gap-5 px-6 pb-12 pt-16 sm:pt-20">
+        <p className="text-[9px] font-medium uppercase tracking-[0.2em] text-slate-400 sm:text-[11px] sm:tracking-[0.22em]">
+          <Link href="/" className="text-slate-400 transition hover:text-slate-600">HANDBOOK</Link>
         </p>
-      </div>
-      <section className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {topics.map((topic) => (
-          <Link
-            key={topic.href}
-            href={topic.href}
-            className="group flex flex-col rounded-3xl p-6 transition hover:-translate-y-0.5"
-          >
-            <h2 className="text-lg font-semibold text-slate-800">{topic.title}</h2>
-            <p className="mt-2 text-sm text-slate-500">{topic.body}</p>
-            <span className="mt-4 inline-flex items-center gap-2 text-xs font-normal uppercase tracking-[0.2em] text-[#326354] group-hover:text-[#2a5044]">
-              Read More
-              <svg aria-hidden="true" viewBox="0 0 20 20" className="h-4 w-4" fill="none">
-                <path
-                  d="M17.5 10L11.25 3.75L10.3688 4.63125L15.1063 9.375L2.5 9.375L2.5 10.625L15.1063 10.625L10.3688 15.3687L11.25 16.25L17.5 10Z"
-                  fill="currentColor"
-                />
-              </svg>
-            </span>
-          </Link>
-        ))}
+        <h1
+          className="text-center text-[36px] font-normal text-slate-800 sm:text-[56px]"
+          style={{ fontFamily: "Cormorant Garamond, serif" }}
+        >
+          Wiki
+        </h1>
+        <p className="text-center text-[13px] leading-[1.7] text-slate-400 sm:text-[15px]">
+          Explore company knowledge, operations
+          <br />
+          and resources.
+        </p>
+        <div className="h-px w-10 bg-slate-200 sm:w-[60px]" />
       </section>
+
+      {/* Hero Image — full bleed mobile, capped at 1440px desktop */}
+      <div className="relative ml-[calc(50%-50vw)] h-[220px] w-screen overflow-hidden sm:ml-[-24px] sm:mr-[-24px] sm:h-[480px] sm:w-[calc(100%+48px)]">
+        <Image
+          src="/images/region-france-south_of_france.png"
+          alt="South of France countryside"
+          fill
+          className="object-cover"
+          sizes="(max-width: 768px) 100vw, 1440px"
+          priority
+        />
+      </div>
+
+      {/* Cards */}
+      <div className="mx-auto max-w-[1040px] space-y-8 px-6 py-16">
+        <div className="grid gap-8 sm:grid-cols-2">
+          {topics.map((topic) => (
+            <Link
+              key={topic.href}
+              href={topic.href}
+              className="group block rounded-2xl bg-[#eae6e1] px-8 py-9 transition hover:-translate-y-0.5"
+            >
+              <h2
+                className="text-[22px] font-semibold text-slate-800 sm:text-[24px]"
+                style={{ fontFamily: "Cormorant Garamond, serif" }}
+              >
+                {topic.title}
+              </h2>
+              <div className="mt-3 h-0.5 w-8 bg-[#326354]" />
+              <p className="mt-3 text-[13px] leading-[1.7] text-slate-500 sm:text-[14px]">
+                {topic.body}
+              </p>
+              <span className="mt-4 inline-block text-[10px] font-medium uppercase tracking-[0.22em] text-[#326354] sm:text-[11px]">
+                READ MORE →
+              </span>
+            </Link>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

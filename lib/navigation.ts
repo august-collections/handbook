@@ -1,12 +1,15 @@
 export type NavItem = {
   href: string;
   label: string;
+  breadcrumbLabel?: string;
   description?: string;
+  icon?: string;
 };
 
 export type NavSection = {
   title: string;
   href: string;
+  description?: string;
   items: NavItem[];
 };
 
@@ -14,67 +17,172 @@ export const navSections: NavSection[] = [
   {
     title: "Welcome",
     href: "/welcome",
+    description: "Company handbook, ethos, values, and onboarding.",
     items: [
-      {
-        href: "/welcome/founders-vision",
-        label: "The Founders' Vision",
-        description: "The story and motivation behind August",
-      },
       {
         href: "/welcome/introduction-to-august",
         label: "An Introduction to August",
         description: "What we do and how we operate",
+        icon: "book-open",
       },
       {
-        href: "/welcome/our-values",
-        label: "Our Values",
-        description: "The principles that guide our work",
+        href: "/welcome/founders-vision",
+        label: "The Founders' Vision",
+        description: "The story and motivation behind August",
+        icon: "eye",
       },
       {
         href: "/welcome/the-august-ethos",
         label: "The August Ethos",
         description: "Our philosophy and culture",
+        icon: "sparkles",
+      },
+      {
+        href: "/welcome/our-values",
+        label: "Our Values",
+        description: "The principles that guide our work",
+        icon: "star",
       },
     ],
   },
   {
     title: "Wiki",
     href: "/wiki",
+    description: "Explore company knowledge, operations, and resources.",
     items: [
-      { href: "/wiki/branding-and-identity", label: "Branding & Identity" },
-      { href: "/wiki/collections", label: "Our Collections" },
-      { href: "/wiki/financials", label: "August Revenue Model" },
-      { href: "/wiki/homeowners", label: "Homeowners Journey" },
-      { href: "/wiki/how-to", label: "How To" },
-      { href: "/wiki/how-we-work", label: "How We Work at August" },
-      { href: "/wiki/hr-and-people", label: "HR & People" },
-      { href: "/wiki/legal", label: "Legal Onboarding" },
-      { href: "/wiki/new-starters", label: "New Starters" },
-      { href: "/wiki/regions", label: "Our Regions" },
-      { href: "/wiki/related-brands", label: "Related Brands" },
-      { href: "/wiki/resources", label: "Resources" },
-      { href: "/wiki/team", label: "Executive Team" },
+      {
+        href: "/wiki/branding-and-identity",
+        label: "Branding & Identity",
+        description: "Fonts, colours, logos, and brand templates.",
+        icon: "palette",
+      },
+      {
+        href: "/wiki/collections",
+        label: "Collections",
+        description: "Our 5 collection types and internal roadmap.",
+        icon: "layers",
+      },
+      {
+        href: "/wiki/financials",
+        label: "Financials",
+        description: "Revenue, capital, and financial structure.",
+        icon: "trending-up",
+      },
+      {
+        href: "/wiki/homeowners",
+        label: "Homeowners",
+        description: "Homeowner journey, access, and guest experience.",
+        icon: "house",
+      },
+      {
+        href: "/wiki/how-to",
+        label: "How To",
+        description: "Step-by-step instructions for everyday workflows.",
+        icon: "list-checks",
+      },
+      {
+        href: "/wiki/how-we-work",
+        label: "How We Work",
+        description: "Quarterly cadences, presentations, and team rituals.",
+        icon: "calendar",
+      },
+      {
+        href: "/wiki/hr-and-people",
+        label: "HR & People",
+        description: "HR support, wellbeing, and company handbook.",
+        icon: "heart",
+      },
+      {
+        href: "/wiki/legal",
+        label: "Legal",
+        description: "Legal onboarding and acquisition process.",
+        icon: "scale",
+      },
+      {
+        href: "/wiki/new-starters",
+        label: "New Starters",
+        description: "Onboarding timeline, first 90 days, and manager duties.",
+        icon: "rocket",
+      },
+      {
+        href: "/wiki/regions",
+        label: "Regions",
+        description: "Explore our 10 European villa destinations.",
+        icon: "map-pin",
+      },
+      {
+        href: "/wiki/related-brands",
+        label: "Related Brands",
+        description: "Partner brands and the wider August ecosystem.",
+        icon: "link",
+      },
+      {
+        href: "/wiki/resources",
+        label: "Resources",
+        description: "Templates, assets, downloads, and shared resources.",
+        icon: "folder",
+      },
+      {
+        href: "/wiki/team",
+        label: "Team",
+        breadcrumbLabel: "Team",
+        description: "Meet the team — roles and departments.",
+        icon: "users",
+      },
     ],
   },
   {
     title: "IT & Support",
     href: "/it-support",
+    description: "Tools, access, devices, and troubleshooting guides.",
     items: [
-      { href: "/it-support/ai-policy", label: "AI Usage Policy" },
+      {
+        href: "/it-support/ai-policy",
+        label: "AI Policy",
+        description: "Guidelines for using AI tools responsibly.",
+        icon: "bot",
+      },
       {
         href: "/it-support/accounts-sso-passwords",
-        label: "Accounts, SSO, Passwords",
+        label: "Accounts, SSO & Passwords",
+        description: "Single sign-on setup and password management.",
+        icon: "key-round",
       },
-      { href: "/it-support/applications", label: "Applications" },
-      { href: "/it-support/device-setup", label: "Device Setup" },
-      { href: "/it-support/security", label: "Security" },
-      { href: "/it-support/support", label: "Support" },
-      { href: "/it-support/use-policy", label: "Acceptable Use Policy (AUP)" },
+      {
+        href: "/it-support/applications",
+        label: "Applications",
+        description: "Software tools, licences, and approved apps.",
+        icon: "app-window",
+      },
+      {
+        href: "/it-support/device-setup",
+        label: "Device Setup",
+        description: "Laptop configuration and initial setup guides.",
+        icon: "laptop",
+      },
+      {
+        href: "/it-support/support",
+        label: "Support",
+        description: "IT support channels, escalation, and FAQs.",
+        icon: "headphones",
+      },
+      {
+        href: "/it-support/use-policy",
+        label: "Use Policy",
+        description: "Acceptable use and responsible technology usage.",
+        icon: "file-check",
+      },
+      {
+        href: "/it-support/office-ready",
+        label: "Office Ready",
+        description: "Preparing your workspace and office setup.",
+        icon: "building",
+      },
     ],
   },
 ];
 
-// Lookup helpers for breadcrumbs and active state detection
+// Lookup helpers for active state detection
 
 export function findSectionByPath(pathname: string): NavSection | undefined {
   return navSections.find(
