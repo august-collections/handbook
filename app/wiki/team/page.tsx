@@ -16,7 +16,6 @@ const departmentHeads = [
   { name: "Jenin Khanam", role: "Interim Legal Counsel", src: "/images/staff/legal-paralegal-jenin_khanam.jpeg" },
   { name: "Mytch Parks", role: "Head of Product", src: "/images/staff/head-head_of_product-mytch_parks.png" },
   { name: "Khitiz Saxena", role: "Product Manager", src: "/images/staff/product-technical_product_manager-kshitiz_saxena.png" },
-  { name: "Karolina Wierzbicka", role: "Head of Design", src: "/images/staff/design-head_of_design-karolina_wierzbicka.png" },
   { name: "Rafael Baiao", role: "Head of Real Estate", src: "/images/staff/head-head_of_acquisitions-rafael_baiao.png" },
   { name: "Marcus Wright", role: "Head of Development", src: "/images/staff/head-head_of_development-marcus_wright.png" },
   { name: "Kirsten Meyer", role: "Commercial Director", src: "/images/staff/head-commercial_director-kirsten_meyer.png" },
