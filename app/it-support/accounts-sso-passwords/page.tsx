@@ -325,18 +325,23 @@ export default function AccountsSsoPasswordsPage() {
               </div>
               <div className="rounded-2xl bg-[#eae6e1] px-6 py-5">
                 <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-slate-400">Step 2</p>
-                <h4 className="mt-1 text-[14px] font-semibold text-slate-800">Link to Your Account</h4>
-                <p className="mt-2 text-[13px] leading-[1.7] text-slate-500">Go to <a href="https://myaccount.google.com/security" target="_blank" rel="noreferrer" className="text-[#326354] transition hover:text-[#2a5044]">myaccount.google.com/security</a> → 2-Step Verification → Authenticator app → Set up authenticator.</p>
+                <h4 className="mt-1 text-[14px] font-semibold text-slate-800">Open your Google Account</h4>
+                <p className="mt-2 text-[13px] leading-[1.7] text-slate-500">Visit <a href="https://myaccount.google.com" target="_blank" rel="noreferrer" className="text-[#326354] transition hover:text-[#2a5044]">myaccount.google.com</a> and sign in with your work email, then click <strong className="text-slate-700">Security</strong> in the left-hand navigation.</p>
               </div>
               <div className="rounded-2xl bg-[#eae6e1] px-6 py-5">
                 <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-slate-400">Step 3</p>
-                <h4 className="mt-1 text-[14px] font-semibold text-slate-800">Scan the QR Code</h4>
-                <p className="mt-2 text-[13px] leading-[1.7] text-slate-500">Open the app, tap + → Scan a QR code, and point your camera at the code on screen.</p>
+                <h4 className="mt-1 text-[14px] font-semibold text-slate-800">Find 2-Step Verification</h4>
+                <p className="mt-2 text-[13px] leading-[1.7] text-slate-500">Under &ldquo;How you sign in to Google,&rdquo; click <strong className="text-slate-700">2-Step Verification</strong> → <strong className="text-slate-700">Get Started</strong>, then choose <strong className="text-slate-700">Authenticator app</strong> → <strong className="text-slate-700">Set up authenticator</strong>.</p>
               </div>
               <div className="rounded-2xl bg-[#eae6e1] px-6 py-5">
                 <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-slate-400">Step 4</p>
-                <h4 className="mt-1 text-[14px] font-semibold text-slate-800">Verify &amp; Backup</h4>
-                <p className="mt-2 text-[13px] leading-[1.7] text-slate-500">Enter the 6-digit code to verify. Then generate backup codes and save them in your 1Password vault.</p>
+                <h4 className="mt-1 text-[14px] font-semibold text-slate-800">Scan the QR Code</h4>
+                <p className="mt-2 text-[13px] leading-[1.7] text-slate-500">Open the Authenticator app, tap + → Scan a QR code, and point your camera at the code on screen.</p>
+              </div>
+              <div className="rounded-2xl bg-[#eae6e1] px-6 py-5 sm:col-span-2">
+                <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-slate-400">Step 5</p>
+                <h4 className="mt-1 text-[14px] font-semibold text-slate-800">Verify, Turn On &amp; Backup</h4>
+                <p className="mt-2 text-[13px] leading-[1.7] text-slate-500">Enter the 6-digit code to verify and click <strong className="text-slate-700">Turn On</strong>. Then generate backup codes and save them in your 1Password vault.</p>
               </div>
             </div>
             <div className="rounded-2xl bg-[#eae6e1] px-7 py-6">
@@ -347,6 +352,109 @@ export default function AccountsSsoPasswordsPage() {
                 <li>If you lose your phone, contact IT immediately. <span className="underline">This is why backup codes in 1Password are essential.</span></li>
               </ul>
             </div>
+          </div>
+
+          {/* Keeping your account secure */}
+          <div className="space-y-4 pt-4">
+            <h2
+              className="text-[24px] font-semibold text-slate-800 sm:text-[28px]"
+              style={{ fontFamily: "Cormorant Garamond, serif" }}
+            >
+              Keeping your account secure
+            </h2>
+            <p className="text-[14px] leading-[1.8] text-slate-500 sm:text-[15px]">
+              More answers to Frequently Asked Questions (FAQ) for 2FA, Google Authenticator and MFA is available below.
+            </p>
+
+            <details className="group rounded-2xl bg-[#eae6e1] px-7 py-5 [&_summary::-webkit-details-marker]:hidden">
+              <summary className="flex cursor-pointer items-center justify-between gap-4 text-[14px] font-semibold text-slate-800">
+                <span>MFA / 2FA - FAQ</span>
+                <svg
+                  className="h-4 w-4 shrink-0 text-slate-500 transition-transform group-open:rotate-180"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={2}
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                </svg>
+              </summary>
+
+              <div className="mt-6 space-y-8">
+                {/* What changes day-to-day */}
+                <div className="space-y-3">
+                  <h3 className="text-[16px] font-semibold text-slate-800">What changes day-to-day</h3>
+                  <p className="text-[14px] leading-[1.8] text-slate-500">Very little. Logging in works the same way, with one extra step.</p>
+                  <ul className="list-inside list-disc space-y-1.5 text-[14px] leading-[1.7] text-slate-500">
+                    <li>Enter your email and password as usual</li>
+                    <li>A notification appears on your phone — tap <strong className="text-slate-700">Yes, it&apos;s me</strong></li>
+                    <li>You&apos;re in, usually in under ten seconds</li>
+                  </ul>
+                  <p className="text-[14px] leading-[1.8] text-slate-500">
+                    On trusted devices like your own laptop, Google will remember you and won&apos;t ask every time.
+                  </p>
+                  <p className="text-[14px] leading-[1.8] text-slate-500">
+                    If you receive a 2-Step prompt that you didn&apos;t trigger, tap <strong className="text-slate-700">No</strong> and change your password immediately — it means someone has your credentials and is attempting to sign in. Let your manager know straight away so we can act quickly.
+                  </p>
+                </div>
+
+                {/* Shared email addresses */}
+                <div className="space-y-3">
+                  <h3 className="text-[16px] font-semibold text-slate-800">A note on shared email addresses</h3>
+                  <p className="text-[14px] leading-[1.8] text-slate-500">
+                    Addresses like <strong className="text-slate-700">info@</strong>, <strong className="text-slate-700">hello@</strong>, or <strong className="text-slate-700">reservations@</strong> are fine for receiving email — but they should never be used to log in to any platform: Google Ads, Meta, booking systems, or anything else. That&apos;s exactly how the recent breach happened.
+                  </p>
+                  <p className="text-[14px] leading-[1.8] text-slate-500">
+                    If you currently use a shared address to access any platform, please speak to your manager this week. We&apos;re converting these to distribution lists so they can continue receiving mail but can no longer be used as login credentials anywhere.
+                  </p>
+                </div>
+
+                {/* FAQs */}
+                <div className="space-y-3">
+                  <h3 className="text-[16px] font-semibold text-slate-800">A few questions we&apos;ve been asked</h3>
+                  <div className="space-y-4">
+                    <div>
+                      <p className="text-[14px] font-semibold text-slate-700">What if I don&apos;t have a smartphone?</p>
+                      <p className="mt-1 text-[14px] leading-[1.8] text-slate-500">
+                        You can receive a text message or phone call to a backup number instead. Set this up under <strong className="text-slate-700">Security → 2-Step Verification → Add backup option → Phone number</strong>.
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-[14px] font-semibold text-slate-700">What if I&apos;m travelling without mobile data?</p>
+                      <p className="mt-1 text-[14px] leading-[1.8] text-slate-500">
+                        Download a set of backup codes before you travel: <strong className="text-slate-700">Security → 2-Step Verification → Backup codes → Download</strong>. Keep them somewhere safe — each code works once only.
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-[14px] font-semibold text-slate-700">I&apos;ve been locked out — what do I do?</p>
+                      <p className="mt-1 text-[14px] leading-[1.8] text-slate-500">
+                        Contact your manager straight away. Our administrator can issue a temporary override via the Google Workspace console. Please don&apos;t create a new account in the meantime.
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-[14px] font-semibold text-slate-700">Is this really mandatory?</p>
+                      <p className="mt-1 text-[14px] leading-[1.8] text-slate-500">
+                        It is. After the two-week window, Google will require anyone who hasn&apos;t completed setup to do so before they can sign in. We&apos;d much rather everyone is set up before that point — it genuinely takes only a few minutes.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Ready to set up */}
+                <div className="rounded-2xl bg-white px-7 py-6">
+                  <p className="text-[14px] font-semibold text-slate-800">Ready to set up?</p>
+                  <p className="mt-2 text-[14px] leading-[1.8] text-slate-500">
+                    Visit your Google Account security settings and follow the five steps above. It takes about three minutes and you won&apos;t need to think about it again.
+                  </p>
+                  <p className="mt-3 text-[14px] leading-[1.8] text-slate-500">
+                    <a href="https://myaccount.google.com" target="_blank" rel="noreferrer" className="text-[#326354] transition hover:text-[#2a5044]">Go to myaccount.google.com →</a>
+                  </p>
+                  <p className="mt-1 text-[14px] leading-[1.8] text-slate-500">
+                    <a href="https://support.google.com/accounts/answer/1066447?hl=en&ref_topic=7189195&sjid=17517382906637192272-EU&co=GENIE.Platform%3DiOS&oco=0" target="_blank" rel="noreferrer" className="text-[#326354] transition hover:text-[#2a5044]">Download &amp; use Google Authenticator (Google Help) →</a>
+                  </p>
+                </div>
+              </div>
+            </details>
           </div>
 
           <BackToTop />
